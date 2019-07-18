@@ -87,12 +87,22 @@ main {
       padding: 5px;
       overflow-y: scroll;
       overflow-x: scroll;
-      height: 90vh;
+      height: 80vh;
       p {
         margin-right: 10px;
         span {
           display: none;
         }
+      }
+    }
+    .words-footer {
+      // bottom: 0px;
+      // margin-bottom: 0px;
+      height: 50px;
+      background: white;
+      h4 {
+        color: orange;
+        padding: 15px;
       }
     }
   }

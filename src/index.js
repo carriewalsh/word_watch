@@ -19,7 +19,7 @@ $(document).ready(() => {
 
 // get rid of spaces and punctation and numbers
   function postWords(userInput) {
-    const newString = userInput.replace(/[0123456789 .,\/#!$%\^&\*;:{}=\-_`~()+]/g,"")
+    const newString = userInput.replace(/[0123456789 .,\/#!$%\^&\*;:{}=\-_`~()+x]/g,"")
     fetch("https://wordwatch-api.herokuapp.com/api/v1/words", {
       method: "POST",
       headers: {
@@ -31,6 +31,7 @@ $(document).ready(() => {
       return response.json()
     })
     .then(jsonResponse => {
+      $('.footer-message').text(jsonResponse["message"])
       console.log(jsonResponse)
     })
   }
@@ -44,7 +45,7 @@ $(document).ready(() => {
     e.preventDefault();
     var $userInput = $('textarea').val()
     postWords($userInput);
-    getTopWord();
-    // $('.stuff').append($userInput);
+    var $message = getTopWord();
+    $('.footer-message').append($message);
   });
 })
