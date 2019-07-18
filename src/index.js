@@ -19,13 +19,14 @@ $(document).ready(() => {
 
 // get rid of spaces and punctation and numbers
   function postWords(userInput) {
+    const newString = userInput.replace(/[0123456789 .,\/#!$%\^&\*;:{}=\-_`~()+]/g,"")
     fetch("https://wordwatch-api.herokuapp.com/api/v1/words", {
       method: "POST",
       headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
-      body: JSON.stringify({word: {value: userInput}})
+      body: JSON.stringify({word: {value: newString}})
     }).then(response => {
       return response.json()
     })
