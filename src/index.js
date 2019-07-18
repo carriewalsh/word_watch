@@ -11,7 +11,8 @@ $(document).ready(() => {
       })
       .then(jsonResponse => {
         const word = Object.keys(jsonResponse["word"])[0]
-        $('h1').text(word)
+        const count = jsonResponse["word"][word]
+        $('.top-words').text(word + ' - ' + count)
       })
   }
   console.log(getTopWord())
@@ -19,11 +20,11 @@ $(document).ready(() => {
 
 
   let $topWord = $('h1');
-  $topWord.on('click',() => {
-    $topWord.css('color','orange');
+  $('.top-words').on('click',() => {
+    $('.top-words').css('color','orange');
   });
   let $button = $('button');
   $button.on('click',() => {
-    $topWord.css('color','green');
+    $('.top-words').css('color','green');
   });
 })
