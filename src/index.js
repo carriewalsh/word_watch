@@ -2,6 +2,7 @@ import $ from 'jquery'
 
 $(document).ready(() => {
   // have fun!
+  getTopWord()
 
   function getTopWord() {
     const word = ""
@@ -15,16 +16,36 @@ $(document).ready(() => {
         $('.top-words').text(word + ' - ' + count)
       })
   }
-  console.log(getTopWord())
+
+// get rid of spaces and punctation and numbers
+  function postWords(userInput) {
+    const newString = userInput.replace(/[0123456789 .,\/#!$%\^&\*;:{}=\-_`~()+x]/g,"")
+    fetch("https://wordwatch-api.herokuapp.com/api/v1/words", {
+      method: "POST",
+      headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+      body: JSON.stringify({word: {value: newString}})
+    }).then(response => {
+      return response.json()
+    })
+    .then(jsonResponse => {
+      $('.footer-message').text(jsonResponse["message"])
+      console.log(jsonResponse)
+    })
+  }
 
 
-
-  let $topWord = $('h1');
   $('.top-words').on('click',() => {
     $('.top-words').css('color','orange');
   });
   let $button = $('button');
-  $button.on('click',() => {
-    $('.top-words').css('color','green');
+  $button.on('click',(e) => {
+    e.preventDefault();
+    var $userInput = $('textarea').val()
+    postWords($userInput);
+    var $message = getTopWord();
+    $('.footer-message').append($message);
   });
 })

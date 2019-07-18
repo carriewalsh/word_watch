@@ -1,18 +1,18 @@
 @import "./reset";
 
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700);
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display&display=swap');
 
 $indigo: #4B0082;
 $light-gray: #ededf5;
-$gray: #555;
+$gray: #4B0082;
 $salmon: #FA8072;
-$fonts: "Open Sans", "Helvetica", sans-serif;
+$fonts: 'Playfair Display', serif;
 
 body {
   font-family: $fonts;
   color: $gray;
   margin: 5px;
-  background-color: #ebebeb;
+  background-color: #9CD9CB;
   overflow: hidden;
 }
 
@@ -50,11 +50,13 @@ main {
       width: 100%;
       height: 80vh;
       font-family: $fonts;
+      font-size: 18px;
     }
     button {
       border: none;
       color: $light-gray;
       width: 205px;
+      font-family: $fonts;
       border-radius: 3px;
       padding: .8em 3em;
       font-size: 1.1em;
@@ -70,7 +72,7 @@ main {
   }
   .word-data {
     width: 65%;
-    background-color: #ddd;
+    background-color: #FFC29A;
     .top-word {
       display: flex;
       flex-direction: column;
@@ -87,12 +89,22 @@ main {
       padding: 5px;
       overflow-y: scroll;
       overflow-x: scroll;
-      height: 90vh;
+      height: 80vh;
       p {
         margin-right: 10px;
         span {
           display: none;
         }
+      }
+    }
+    .words-footer {
+      // bottom: 0px;
+      // margin-bottom: 0px;
+      height: 50px;
+      background: white;
+      h4 {
+        color: #9CD9CB;
+        padding: 15px;
       }
     }
   }
